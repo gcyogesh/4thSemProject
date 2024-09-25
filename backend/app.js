@@ -1,19 +1,27 @@
-const http = require('http');
+import http from 'http'
+import { userRoutes } from './routes/userRoute.js';
+import { pool } from './connection/db.js';
+import dotenv from 'dotenv'
+dotenv.config();
 
-const server = http.createServer((req, res) => {
-  if (req.url === '/') {
-    // Set the response header (status 200 and content type)
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    // Send a response
-    res.end('Hello, welcome to the homepage!');
+// Connect to the database (optional)
+pool.connect((err) => {
+  if (err) {
+    console.error('Database connection error:', err.stack);
   } else {
-    // Handle other routes or send a 404 response for unhandled routes
-    res.writeHead(404, { 'Content-Type': 'text/plain' });
-    res.end('404: Page not found');
+    console.log('Connected to PostgreSQL database');
   }
 });
 
-const port = 3006;
-server.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
+
+// Create an HTTP server
+const server = http.createServer((req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  userRoutes(req, res); // Route the request
+});
+
+// Start the server
+const PORT = process.env.PORT || 5000;
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });

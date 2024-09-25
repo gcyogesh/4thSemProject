@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -36,63 +37,48 @@
         </nav>
     </header>
 
-    <div class="font-sans antialiased bg-grey-lightest">
-        <!-- Top Nav -->
-        <div class="w-full bg-green fixed shadow z-1">
-            <div class="container mx-auto">
-                <div class="w-full flex justify-between items-center py-4 px-8">
-                    <!-- Brand -->
-                    <div class="text-center text-white font-bold">Your Company</div>
-                    <!-- Navigation -->
-                    <div class="items-center hidden sm:flex">
-                        <a href="#" class="text-white hover:text-green-lightest no-underline mx-2 px-2 py-2">Link 1</a>
-                        <a href="#" class="text-white hover:text-green-lightest no-underline mx-2 px-2 py-2">Link 2</a>
-                        <a href="#"
-                            class="bg-green-dark hover:bg-green-darker rounded-full text-white no-underline mx-2 px-4 py-2">Link
-                            3</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+  
         <!-- Content -->
-        <div class="w-full bg-grey-lightest" style="padding-top: 4rem;">
+        <div id="registrationForm" class="w-full bg-grey-lightest" style="padding-top: 4rem;">
             <div class="container mx-auto py-8">
                 <div class="w-5/6 lg:w-1/2 mx-auto bg-white rounded shadow">
                     <div class="py-4 px-8 text-black text-xl border-b border-grey-lighter">Register for a free account
                     </div>
-                    <div class="py-4 px-8">
-                        <div class="flex mb-4">
-                            <div class="w-1/2 mr-1">
-                                <label class="block text-grey-darker text-sm font-bold mb-2" for="first_name">First
+                    <form class="py-4 px-8 " method="POSt" action="/register">
+                        <div class=" mb-4">
+                            <div class=" mr-1">
+                                <label class="block text-grey-darker text-sm font-bold mb-2" for="name">
                                     Name</label>
                                 <input class="appearance-none border rounded w-full py-2 px-3 text-grey-darker"
-                                    id="first_name" type="text" placeholder="Your first name">
+                                    id="name" type="text" placeholder="Your first name">
                             </div>
-                            <div class="w-1/2 ml-1">
-                                <label class="block text-grey-darker text-sm font-bold mb-2" for="last_name">Last
-                                    Name</label>
-                                <input class="appearance-none border rounded w-full py-2 px-3 text-grey-darker"
-                                    id="last_name" type="text" placeholder="Your last name">
-                            </div>
+                           
                         </div>
                         <div class="mb-4">
                             <label class="block text-grey-darker text-sm font-bold mb-2" for="email">Email
                                 Address</label>
                             <input class="appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="email"
-                                type="email" placeholder="Your email address">
+                                type="email" placeholder="Your email address" name="email">
                         </div>
                         <div class="mb-4">
                             <label class="block text-grey-darker text-sm font-bold mb-2" for="password">Password</label>
                             <input class="appearance-none border rounded w-full py-2 px-3 text-grey-darker"
-                                id="password" type="password" placeholder="Your secure password">
+                                id="password" type="password" placeholder="Your secure password" name="password">
                         </div>
                         <div class="flex items-center justify-between mt-8">
-                            <button class="bg-black hover:bg-blue-400 text-white font-bold py-2 px-4 rounded-full"
+                            <button class="bg-black hover:bg-blue-400 text-white font-bold py-2 px-6 rounded-md"
                                 type="submit">
                                 Sign Up
                             </button>
                         </div>
-                    </div>
+                        <div class="flex items-center justify-between mt-8">
+                            <button class="bg-gray-400 hover:bg-blue-400 text-black font-bold py-2 px-4 rounded-full"
+                                type="submit">
+                                <i class="fa-brands fa-google mr-4"></i>
+                                Sign In Wigh Google
+                            </button>
+                        </div>
+                    </form>
                 </div>
                 <p class="text-center my-4">
                      Already have an account?
@@ -159,6 +145,39 @@
     </div>
     </footer>
     </div>
+
+
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', async(e)=>{
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data={
+                name:formData.get('name'),
+                email:formData.get('email'),
+                password:formData.get('password'),
+            };
+            try{
+
+                const response = await fetch('/register', {
+                    method:"POST",
+                    headers:{
+                        'Content-Type':"application/json"
+                    },
+                    body:JSON.stringify(data)
+                })
+                const result = await response.json();
+                if(response.ok){
+                    alert(result.message)
+                }else{
+                    alert("Registration Failed");
+                }
+
+            }catch(err){
+              alert("Error while registering data", err)
+            }
+        })
+    </script>
 </body>
 
 </html>

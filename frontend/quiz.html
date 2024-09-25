@@ -7,7 +7,6 @@
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -24,7 +23,7 @@
                 <!-- nav buttons and profile -->
                 <div class="flex items-center max-sm:hidden">
                     <button class="bg-orange-600 text-white font-semibold rounded px-3 py-1 mr-2">
-                        <a href="./login.html">CREATE ACCOUNT</a>
+                        <a href="./register.html">CREATE ACCOUNT</a>
                     </button>
                     <img src="https://png.pngtree.com/png-vector/20220817/ourmid/pngtree-man-avatar-with-circle-frame-vector-ilustration-png-image_6110328.png"
                         class="w-12 mr-2" alt="">
@@ -37,57 +36,56 @@
         </nav>
     </header>
 
- 
-        <!-- Content -->
-        <div class="w-full bg-grey-lightest" style="padding-top: 4rem;">
-            <div class="container mx-auto py-8">
-                <div class="w-5/6 lg:w-1/2 mx-auto bg-white rounded shadow">
-                    <div class="py-4 px-8 text-black text-xl border-b border-grey-lighter">Register for a free account
-                    </div>
-                    <div class="py-4 px-8">
-                        <div class="mb-4">
-                            <label class="block text-grey-darker text-sm font-bold mb-2" for="email">Email
-                                Address</label>
-                            <input class="appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="email"
-                                type="email" placeholder="Your email address">
-                        </div>
-                        <div class="mb-4">
-                            <label class="block text-grey-darker text-sm font-bold mb-2" for="password">Password</label>
-                            <input class="appearance-none border rounded w-full py-2 px-3 text-grey-darker"
-                                id="password" type="password" placeholder="Your secure password">
-                        </div>
-                        <div class="flex items-center justify-between mt-8">
-                            <button class="bg-black hover:bg-blue-400 text-white font-bold py-2 px-4 rounded-full"
-                                type="submit">
-                                Sign In
-                            </button>
-                        </div>
-                        <div class="flex items-center justify-between mt-8">
-                            <button class="bg-gray-400 hover:bg-blue-400 text-black font-bold py-2 px-4 rounded-full"
-                                type="submit">
-                                <i class="fa-brands fa-google mr-4"></i>
-                                SignIn With Google
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <p class="text-center my-4">
-                    Not registered yet?
-                    <a href="./register.html" class="text-grey-dark text-md font-bold no-underline hover:text-grey-darker">
-                        Go Register Please.
-                        </a>
-                </p>
-            </div>
-        </div>
-        <!-- Footer -->
-        <div class="w-full bg-grey-lighter py-8">
-            <div class="container mx-auto text-center px-8">
-                <p class="text-grey-dark mb-2 text-sm">Go Back To
-                    <a class="font-bold" href="./index.html">Home page</a>
-                </p>
-            </div>
-        </div>
 
+
+
+    <div class="bg-gray-100 flex justify-center items-center min-h-screen">
+        <div class="w-full max-w-md bg-white rounded-lg shadow-md p-6">
+          <h2 class="text-2xl font-semibold mb-4 text-center">Quiz Application</h2>
+          
+          <!-- Quiz Questions Container -->
+          <div class="mb-4">
+            <p class="text-lg mb-2 font-medium">Question 1:</p>
+            <p class="mb-4">Is there is intraday trading in Nepal?</p>
+            
+            <!-- Answer Options -->
+            <div class="space-y-2">
+              <label class="block">
+                <input type="radio" name="question1" class="mr-2">
+                <span>Yes</span>
+              </label>
+              <label class="block">
+                <input type="radio" name="question1" class="mr-2">
+                <span>No</span>
+              </label>
+              <label class="block">
+                <input type="radio" name="question1" class="mr-2">
+                <span>Maybe</span>
+              </label>
+              <label class="block">
+                <input type="radio" name="question1" class="mr-2">
+                <span>They might coming</span>
+              </label>
+            </div>
+          </div>
+          
+          <!-- Next Question Button -->
+          <div class="text-center">
+            <button class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition">Next Question</button>
+          </div>
+        </div>
+    </div>
+
+
+    <div class="w-full bg-grey-lighter py-8">
+        <div class="container mx-auto text-center px-8">
+            <p class="text-grey-dark mb-2 text-sm">Go Back To
+                <a class="font-bold" href="./index.html">Home page</a>
+            </p>
+        </div>
+    </div>
+   
+       
 
         <!-- Finished -->
 
